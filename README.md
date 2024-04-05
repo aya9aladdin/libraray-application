@@ -1,11 +1,11 @@
 # library-management-system
 
-This is a simple full-stack project for a library managment system
+This is a simple full-stack project for a library management system
 
 ## Technologies
 - Flask restful: for the back-end API
 - Vue3 : for front-end 
-- mongodb: for database
+- MongoDB: for database
 
 ## API endpoints
 ### Adding new book endpoint
@@ -39,8 +39,12 @@ DELETE http://127.0.0.1:5000/books/id
 
 
 ## Vuetify UI
-I used some UI components from Vuetify library as the buttons, data table and cards
+I used some UI components from Vuetify library as the buttons, data table, and cards
 
-## Vedio demo
+## Things to improve
+- add tests for the API
+- schema validation for the DB
+- add alert messages after adding/deleting/updating a book
+
 
 ![alt text](image.png)
