@@ -46,5 +46,15 @@ I used some UI components from Vuetify library as the buttons, data table, and c
 - schema validation for the DB
 - add alert messages after adding/deleting/updating a book
 
+## running the backend
+- you must have MongoDB installed locally on your machine and server is running
+- install requirement.txt
+- run ``python backend/main.py``
+
+## running frontend
+- ensure that you have npm and vue installed on your machine
+- change directory to the project directory:  ``cd frontend/vue_fronend``
+-  npm run serve 
+
 
 ![alt text](image.png)
