@@ -12,24 +12,23 @@ app = Flask(__name__)
 config = DevelopmentConfig()
 app.config.from_object(config)
 
-CORS(app, resources={r"/*":{'origins':"*"}})
+CORS(app, resources={r"/*":{"origins":"*"}})
 
 #DATABASE = "books_db"
 COLLECTION = "books"
 
-#MONGO_URI = f"mongodb://localhost:27017/{DATABASE}" 
-client = MongoClient(app.config['MONGO_URI'])
-db = client.get_default_database()  # This will use the configured database URI
+client = MongoClient(app.config["MONGO_URI"])
+db = client.get_default_database()
 
 
 api = Api(app)
 
 parser = reqparse.RequestParser()
-parser.add_argument('title', type=str, required=True, help='title is required')
-parser.add_argument('ISBN', type=int, required=True, help='ISBN is required')
-parser.add_argument('genre', type=str, required=True, help='genre is required')
-parser.add_argument('author', type=str, required=True, help='author is required')
-parser.add_argument('pub_year', type=int, required=True, help='pub_year is required')
+parser.add_argument("title", type=str, required=True, help="title is required")
+parser.add_argument("ISBN", type=int, required=True, help="ISBN is required")
+parser.add_argument("genre", type=str, required=True, help="genre is required")
+parser.add_argument("author", type=str, required=True, help="author is required")
+parser.add_argument("pub_year", type=int, required=True, help="pub_year is required")
 
 
 class BooksRetrieval(Resource):
@@ -39,7 +38,7 @@ class BooksRetrieval(Resource):
         books = json.loads(json_util.dumps(data))
 
         for book in books:
-            book['_id'] = book['_id']['$oid']
+            book["_id"] = book["_id"]["$oid"]
 
         return books, 200
 
@@ -97,13 +96,13 @@ class BookModify(Resource):
             return 404, "invalid ID"
             
         book = json.loads(json_util.dumps(book))
-        book["_id"] = book["_id"]['$oid']
+        book["_id"] = book["_id"]["$oid"]
         db[COLLECTION].delete_one({"_id": obj_id})
         return book, 200
 
-api.add_resource(BooksRetrieval, '/books/')
-api.add_resource(BookModify, '/books/<string:book_id>')
+api.add_resource(BooksRetrieval, "/books/")
+api.add_resource(BookModify, "/books/<string:book_id>")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
     

@@ -126,13 +126,7 @@ export default {
     close() {
       this.dialog = false;
     },
-    reset_book(obj) {
-      for (let key in obj) {
-        obj[key] = "";
-      }
-    },
     addBook() {
-      this.newBook = this.reset_book(this.newBook);
       this.formTitle = "Add New Book";
       this.dialog = true;
 
