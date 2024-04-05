@@ -29,12 +29,9 @@
               ></v-text-field>
               <v-text-field
                 v-model="newBook.genre"
-                label="Genre (g)"
+                label="Genre"
               ></v-text-field>
-              <v-text-field
-                v-model="newBook.ISBN"
-                label="ISBN (g)"
-              ></v-text-field>
+              <v-text-field v-model="newBook.ISBN" label="ISBN"></v-text-field>
               <v-text-field
                 v-model="newBook.pub_year"
                 label="Publish Year"

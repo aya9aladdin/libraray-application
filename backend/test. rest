@@ -7,7 +7,6 @@ Content-Type: application/json
   "genre": "science",
   "title": "molecular chemistry",
   "pub_year": "1999",
-  "_id": "id"
 }
 
 ###
@@ -16,11 +15,10 @@ PUT http://127.0.0.1:5000/books/660f9199f30564aacceff1bb
 Content-Type: application/json
 
 {
-    "_id":"234",
-  "title": "Modmn Nga7",
-  "author": "comedy gold",
+  "title": "Harry Potter",
+  "author": "J. K Rowling",
   "ISBN": "12345678D90",
-  "genre": "romance",
+  "genre": "Sci Fi",
   "pub_year": 2020
 }
 
