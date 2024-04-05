@@ -42,3 +42,5 @@ DELETE http://127.0.0.1:5000/books/id
 I used some UI components from Vuetify library as the buttons, data table and cards
 
 ## Vedio demo
+
+![alt text](image.png)
