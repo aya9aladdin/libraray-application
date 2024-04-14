@@ -1,5 +1,5 @@
 POST http://127.0.0.1:5000/books/
-Content-Type: application/json
+content-type: application/json
 
 {
   "author": "chemistry",
@@ -17,7 +17,7 @@ Content-Type: application/json
 {
   "title": "Harry Potter",
   "author": "J. K Rowling",
-  "ISBN": "12345678D90",
+  "ISBN": "1234",
   "genre": "Sci Fi",
   "pub_year": 2020
 }
@@ -34,5 +34,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://127.0.0.1:5000/books/660f762b8a20c1ac58d96ade
+DELETE http://127.0.0.1:5000/books/661014ba234cdb97ff688aac
 Content-Type: application/json
+
+{}

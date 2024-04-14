@@ -4,16 +4,12 @@ import random
 
 sys.path.append('../')  
 
-from main import app
-from pymongo import MongoClient
-from config import TestingConfig
-
-DATABASE = "test_books_db"
-COLLECTION = "books"
+from app import get_app_with_config
+from config import TestConfig
 
 @pytest.fixture
 def test_client():
-    app.config.from_object(TestingConfig)
+    app, mongo = get_app_with_config(TestConfig)
     with app.test_client() as test_client:
         yield test_client
 

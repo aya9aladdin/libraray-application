@@ -1,11 +1,15 @@
-class Config:
-    DEBUG = False
-    TESTING = False
-    MONGO_URI = "mongodb://localhost:27017/books_db"
+class MainConfig:
+    MONGO_HOST = 'mongodb'
+    MONGO_PORT = 27017
+    MONGO_DBNAME = 'books_db'
+    MONGO_URI = f"mongodb://{MONGO_HOST}:{MONGO_PORT}/{MONGO_DBNAME}"
 
-class DevelopmentConfig(Config):
+
+class RunConfig(MainConfig):
     DEBUG = True
+    MONGO_DBNAME = 'books_db'
 
-class TestingConfig(Config):
+
+class TestConfig:
     TESTING = True
-    MONGO_URI = "mongodb://localhost:27017/test_books_db"
+    MONGO_DBNAME = 'test_books_db'

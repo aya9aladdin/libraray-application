@@ -99,8 +99,8 @@ export default {
       books: [],
       dialog: false,
       dialogDelete: false,
+      editForm: false,
       bookID: "",
-      formTitle: "Add New Book",
       newBook: {
         title: "",
         author: "",
@@ -109,6 +109,15 @@ export default {
         pub_year: "",
       },
     };
+  },
+  computed: {
+    formTitle() {
+      if (this.editForm == true) {
+        return "Edit Book";
+      } else {
+        return "Add Book";
+      }
+    },
   },
   methods: {
     getBooks() {
@@ -127,9 +136,8 @@ export default {
       this.dialog = false;
     },
     addBook() {
-      this.formTitle = "Add New Book";
       this.dialog = true;
-
+      this.editForm = false;
       const path = "http://127.0.0.1:5000/books/";
       axios
         .post(path, this.newBook)
@@ -164,8 +172,8 @@ export default {
       this.dialogDelete = false;
     },
     editBook(book) {
+      this.editForm = true;
       this.dialog = true;
-      this.formTitle = "Edit Book";
       const path = "http://127.0.0.1:5000/books/" + book["_id"];
       this.newBook = book;
       axios

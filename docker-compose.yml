@@ -1,0 +1,21 @@
+services:
+
+  app:
+    build: ./backend
+    command: python -u run.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    links:
+      - db
+
+  db:
+    image: mongo:latest
+    hostname: mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=books_db
+    volumes:
+    - ./backend/init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+    ports:
+      - 27017:27017
