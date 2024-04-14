@@ -45,7 +45,7 @@ I used some UI components from Vuetify library as the buttons, data table, and c
 - add tests for the API
 - schema validation for the DB
 - add alert messages after adding/deleting/updating a book
-- add more error-handling logic in both back and front end
+- add more error-handling logic in both the back and front end
 
 
 ## running the backend
@@ -55,7 +55,7 @@ I used some UI components from Vuetify library as the buttons, data table, and c
 
 ## running frontend
 - ensure that you have npm and vue installed on your machine
-- change directory to the project directory:  ``cd frontend/vue_fronend``
+- change directory to the project directory:  ``cd frontend/vue_frontend``
 -  npm run serve 
 
 ## video dem
