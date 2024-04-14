@@ -10,6 +10,6 @@ class RunConfig(MainConfig):
     MONGO_DBNAME = 'books_db'
 
 
-class TestConfig:
+class TestConfig(MainConfig):
     TESTING = True
     MONGO_DBNAME = 'test_books_db'
