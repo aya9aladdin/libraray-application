@@ -3,17 +3,16 @@
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>Library Mangament Systme</v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
+        <v-btn
+          color="blue"
+          text="Add Book"
+          variant="flat"
+          @click="addBookForm"
+        ></v-btn>
         <v-dialog max-width="700" v-model="dialog">
-          <template v-slot:activator="{ props }">
-            <v-btn
-              v-bind="props"
-              color="blue"
-              text="Add Book"
-              variant="flat"
-            ></v-btn>
-          </template>
           <v-card>
             <v-card-title>
               <span>{{ formTitle }}</span>
@@ -42,7 +41,7 @@
               <v-btn color="blue-darken-1" variant="text" @click="close">
                 Cancel
               </v-btn>
-              <v-btn color="blue-darken-1" variant="text" @click="addBook">
+              <v-btn color="blue-darken-1" variant="text" @click="bookAction">
                 Save
               </v-btn>
             </v-card-actions>
@@ -68,7 +67,7 @@
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
-      <v-btn color="green-darken-1" v-bind="props" @click="editBook(item)">
+      <v-btn color="green-darken-1" v-bind="props" @click="editBookForm(item)">
         edit
       </v-btn>
       <v-btn color="red-darken-1" @click="deleteBook(item)"> delete </v-btn>
@@ -135,9 +134,11 @@ export default {
     close() {
       this.dialog = false;
     },
-    addBook() {
+    addBookForm() {
       this.dialog = true;
       this.editForm = false;
+    },
+    addBook() {
       const path = "http://127.0.0.1:5000/books/";
       axios
         .post(path, this.newBook)
@@ -150,7 +151,13 @@ export default {
           console.error(err);
         });
     },
-
+    bookAction() {
+      if (this.editForm) {
+        this.editBook();
+      } else {
+        this.addBook();
+      }
+    },
     deleteBook(book) {
       this.dialogDelete = true;
       this.bookID = book["_id"];
@@ -171,16 +178,21 @@ export default {
     deleteCancel() {
       this.dialogDelete = false;
     },
-    editBook(book) {
+    editBookForm(book) {
       this.editForm = true;
       this.dialog = true;
-      const path = "http://127.0.0.1:5000/books/" + book["_id"];
       this.newBook = book;
+    },
+    editBook() {
+      this.editForm = true;
+      this.dialog = true;
+      const path = "http://127.0.0.1:5000/books/" + this.newBook["_id"];
       axios
         .put(path, this.newBook)
         .then((res) => {
           console.log(res);
           this.getBooks();
+          this.close();
         })
         .catch((err) => {
           console.error(err);
