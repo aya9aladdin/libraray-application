@@ -67,9 +67,7 @@
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
-      <v-btn color="green-darken-1" v-bind="props" @click="editBookForm(item)">
-        edit
-      </v-btn>
+      <v-btn color="green-darken-1" @click="editBookForm(item)"> edit </v-btn>
       <v-btn color="red-darken-1" @click="deleteBook(item)"> delete </v-btn>
     </template>
   </v-data-table>
